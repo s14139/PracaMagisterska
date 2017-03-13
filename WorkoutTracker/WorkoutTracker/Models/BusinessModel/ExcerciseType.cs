@@ -5,7 +5,9 @@ using System.Web;
 
 namespace WorkoutTracker.Models
 {
-    public class Excercise
+    public class ExcerciseType
     {
+        Guid ExcerciseTypeId;
+        string Name;
     }
 }
