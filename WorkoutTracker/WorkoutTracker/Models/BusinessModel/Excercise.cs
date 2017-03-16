@@ -10,7 +10,8 @@ namespace WorkoutTracker.Models
         Guid ExcerciseId;
         string ExcerciseName;
         ExcerciseType type;
-        MuscleGroup muscleGroup;
+        MuscleGroup primaryMuscleGroup;
+        IEnumerable<MuscleGroup> secondaryMuscleGroups;
         Difficulty excerciseDifficulty;
         Equipment equipment;
     }

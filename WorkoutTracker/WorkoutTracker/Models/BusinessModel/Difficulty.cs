@@ -2,7 +2,7 @@
 
 namespace WorkoutTracker.Models
 {
-    internal class Difficulty
+    public class Difficulty
     {
         Guid DifficultyId;
         string difficultyName;

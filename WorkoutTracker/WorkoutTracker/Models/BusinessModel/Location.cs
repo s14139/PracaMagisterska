@@ -2,7 +2,7 @@
 
 namespace WorkoutTracker.Models
 {
-    internal class Location
+    public class Location
     {
         Guid LocationId;
         string Name;

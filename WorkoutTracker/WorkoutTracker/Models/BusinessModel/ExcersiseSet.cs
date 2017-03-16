@@ -2,7 +2,7 @@
 
 namespace WorkoutTracker.Models
 {
-    internal class ExcersiseSet
+    public class ExcersiseSet
     {
         Guid ExcerciseSetId;
         Excercise excercise;
