@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
+using WorkoutTracker.Models;
 
-namespace WorkoutTracker.Models
+namespace WorkoutTracker.DAL
 {
     public class WorkoutContext : DbContext
     {
