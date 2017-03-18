@@ -4,9 +4,9 @@ namespace WorkoutTracker.Models
 {
     public class ExcersiseSet
     {
-        Guid ExcerciseSetId;
-        Excercise excercise;
-        int numberOfRepetitions;
-        decimal equipmentWeight;
+        public Guid ExcerciseSetId;
+        public Excercise excercise;
+        public int numberOfRepetitions;
+        public decimal equipmentWeight;
     }
 }

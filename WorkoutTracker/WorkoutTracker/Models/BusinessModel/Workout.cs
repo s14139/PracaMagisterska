@@ -7,11 +7,11 @@ namespace WorkoutTracker.Models
 {
     public class Workout
     {
-        Guid WorkoutId;
-        Location location;
-        DateTime workoutDate;
-        TimeSpan workoutLength;
-        IEnumerable<ExcersiseSet> sets;
-        Guid UserId;
+        public Guid WorkoutId;
+        public Location location;
+        public DateTime workoutDate;
+        public TimeSpan workoutLength;
+        public IEnumerable<ExcersiseSet> sets;
+        public Guid UserId;
     }
 }

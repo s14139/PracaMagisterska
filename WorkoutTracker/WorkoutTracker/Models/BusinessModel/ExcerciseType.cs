@@ -7,7 +7,7 @@ namespace WorkoutTracker.Models
 {
     public class ExcerciseType
     {
-        Guid ExcerciseTypeId;
-        string Name;
+        public Guid ExcerciseTypeId;
+        public string Name;
     }
 }

@@ -7,12 +7,12 @@ namespace WorkoutTracker.Models
 {
     public class Excercise
     {
-        Guid ExcerciseId;
-        string ExcerciseName;
-        ExcerciseType type;
-        MuscleGroup primaryMuscleGroup;
-        IEnumerable<MuscleGroup> secondaryMuscleGroups;
-        Difficulty excerciseDifficulty;
-        Equipment equipment;
+        public Guid ExcerciseId;
+        public string ExcerciseName;
+        public ExcerciseType type;
+        public MuscleGroup primaryMuscleGroup;
+        public IEnumerable<MuscleGroup> secondaryMuscleGroups;
+        public Difficulty excerciseDifficulty;
+        public Equipment equipment;
     }
 }
