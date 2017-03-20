@@ -7,6 +7,8 @@ namespace WorkoutTracker.Models
 {
     public class Excercise
     {
+        public Excercise() { secondaryMuscleGroups = new List<MuscleGroup>(); }
+
         public Guid ExcerciseId;
         public string ExcerciseName;
         public ExcerciseType type;

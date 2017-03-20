@@ -8,6 +8,7 @@ namespace WorkoutTracker.DAL
 {
     public class WorkoutInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<WorkoutContext>
     {
+        WorkoutInitializer() { }
         protected override void Seed(WorkoutContext context)
         {
             var Difficutly = new List<Difficulty>

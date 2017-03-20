@@ -4,12 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using WorkoutTracker.Models;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace WorkoutTracker.DAL
 {
     public class WorkoutContext : DbContext
     {
-        WorkoutContext() : base("WorkoutContext") { }
+        WorkoutContext() : base("DefaultConnection") { }
 
         public DbSet<Difficulty> Difficulties { get; set; }
         public DbSet<Equipment> Equipments { get; set; }
@@ -20,5 +21,9 @@ namespace WorkoutTracker.DAL
         public DbSet<MuscleGroup> MuscleGroups { get; set; }
         public DbSet<Workout> Workouts { get; set; }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        }
     }
 }

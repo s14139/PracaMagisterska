@@ -7,6 +7,8 @@ namespace WorkoutTracker.Models
 {
     public class Workout
     {
+        public Workout() { sets = new List<ExcersiseSet>(); }
+
         public Guid WorkoutId;
         public Location location;
         public DateTime workoutDate;
