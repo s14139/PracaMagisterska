@@ -4,7 +4,7 @@ namespace WorkoutTracker.Models
 {
     public class Equipment
     {
-        public Guid EquipmentId;
-        public string Name;
+        public int EquipmentId { get; set; }
+        public string Name { get; set; }
     }
 }

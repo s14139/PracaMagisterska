@@ -1,0 +1,86 @@
+﻿@model WorkoutTracker2.Models.Workout
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Workout</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkoutDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkoutDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkoutLength)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkoutLength)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+    </dl>
+    <table class="table" id="excerciseSets">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkoutItems.First().Exercise)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkoutItems.First().Equipment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkoutItems.First().NumberOfSets)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WorkoutItems.First().TotalWeight)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.WorkoutItems)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Exercise.ExcerciseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Equipment.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumberOfSets)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalWeight)
+                </td>
+                <td>
+                    @Html.ActionLink("Add set", "AddExerciseSet", new { WorkoutId = Model.Id, WorkoutItemId = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <div class="form-group">
+        <div class="col-md-12">
+            @Html.ActionLink("Add Workout Item", "AddWorkoutItem", new { id = Model.Id })
+        </div>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

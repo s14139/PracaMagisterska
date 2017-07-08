@@ -7,14 +7,16 @@ namespace WorkoutTracker.Models
 {
     public class Excercise
     {
-        public Excercise() { secondaryMuscleGroups = new List<MuscleGroup>(); }
+        public int ExcerciseId { get; set; }
+        public string ExcerciseName { get; set; }
+        public int ExcerciseTypeId { get; set; }
+        public int MuscleGroupId { get; set; }
+        public int Difficulty { get; set; }
+        public int EquipmentId { get; set; }
 
-        public Guid ExcerciseId;
-        public string ExcerciseName;
-        public ExcerciseType type;
-        public MuscleGroup primaryMuscleGroup;
-        public IEnumerable<MuscleGroup> secondaryMuscleGroups;
-        public Difficulty excerciseDifficulty;
-        public Equipment equipment;
+        public virtual ExcerciseType type { get; set; }
+        public virtual MuscleGroup primaryMuscleGroup { get; set; }
+        public virtual Difficulty excerciseDifficulty { get; set; }
+        public virtual Equipment equipment { get; set; }
     }
 }

@@ -4,7 +4,8 @@ namespace WorkoutTracker.Models
 {
     public class Difficulty
     {
-        public Guid DifficultyId;
-        public string Name;
+        //TODO change all to properties, add int Id props
+        public int DifficultyId {get; set;}
+        public string Name { get; set; }
     }
 }

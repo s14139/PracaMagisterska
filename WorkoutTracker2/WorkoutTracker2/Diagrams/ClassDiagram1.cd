@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="WorkoutTracker2.Models.Difficulty">
+    <Position X="9" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Difficulty.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorkoutTracker2.Models.Equipment">
+    <Position X="3.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Equipment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorkoutTracker2.Models.Exercise">
+    <Position X="6.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEGAAAAAAAAAAAEAAAAAAQAAAAAAAAAAQAAAAAAAgA=</HashCode>
+      <FileName>Models\Excercise.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorkoutTracker2.Models.ExerciseType">
+    <Position X="9" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ExcerciseType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorkoutTracker2.Models.ExerciseSet">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Models\ExcersiseSet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorkoutTracker2.Models.Location">
+    <Position X="1.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Location.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorkoutTracker2.Models.MuscleGroup">
+    <Position X="3.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\MuscleGroup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorkoutTracker2.Models.Workout">
+    <Position X="1.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAIAAAAAIAAAgACAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>Models\Workout.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WorkoutTracker2.Models.WorkoutItem">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAEAAAQAAgAAAAAAUAAAAAAAAAA=</HashCode>
+      <FileName>Models\WorkoutItem.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ExerciseSet" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

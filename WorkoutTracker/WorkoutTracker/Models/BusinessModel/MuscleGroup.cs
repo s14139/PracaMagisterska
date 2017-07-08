@@ -4,7 +4,7 @@ namespace WorkoutTracker.Models
 {
     public class MuscleGroup
     {
-        public Guid MuscleGroupId;
-        public string Name;
+        public int MuscleGroupId { get; set; }
+        public string Name { get; set; }
     }
 }

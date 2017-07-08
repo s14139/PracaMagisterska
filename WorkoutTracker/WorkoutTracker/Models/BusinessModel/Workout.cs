@@ -9,11 +9,13 @@ namespace WorkoutTracker.Models
     {
         public Workout() { sets = new List<ExcersiseSet>(); }
 
-        public Guid WorkoutId;
-        public Location location;
-        public DateTime workoutDate;
-        public TimeSpan workoutLength;
-        public IEnumerable<ExcersiseSet> sets;
-        public Guid UserId;
+        public int WorkoutId { get; set; }
+        public DateTime workoutDate { get; set; }
+        public TimeSpan workoutLength { get; set; }
+        //public int UserId { get; set; }
+        public int LocationId { get; set; }
+
+        public virtual Location location { get; set; }
+        public virtual ICollection<ExcersiseSet> sets { get; set; }
     }
 }
