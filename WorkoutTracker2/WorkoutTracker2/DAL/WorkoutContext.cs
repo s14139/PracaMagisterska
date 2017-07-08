@@ -93,7 +93,7 @@ namespace WorkoutTracker2.DAL
                 },
             };
             ExerciseSets = new List<ExerciseSet>();
-            Workouts = new List<Workout>() { new Workout() { UserId = 1, WorkoutDate = DateTime.Now.ToString(), Location = Locations.First(), WorkoutLength = 2,
+            Workouts = new List<Workout>() { new Workout() { UserId = 1, WorkoutDate = DateTime.Now, Location = Locations.First(), WorkoutLength = 2,
                 WorkoutItems = new List<WorkoutItem> {
                     new WorkoutItem() {
                         Equipment = Equipments.First(), Exercise = Exercises.First(), ExerciseSets = new List<ExerciseSet> {

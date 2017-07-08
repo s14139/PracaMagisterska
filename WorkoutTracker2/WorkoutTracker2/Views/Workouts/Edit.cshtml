@@ -18,18 +18,18 @@
         @Html.HiddenFor(model => model.Id)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.workoutDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.WorkoutDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.workoutDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.workoutDate, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.WorkoutDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.WorkoutDate, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.workoutLength, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.WorkoutLength, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.workoutLength, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.workoutLength, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.WorkoutLength, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.WorkoutLength, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -44,18 +44,18 @@
         <table class="table" id="excerciseSets">
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.ExcerciseSets.First().Exercise)
+                    @Html.DisplayNameFor(model => model.WorkoutItems.First().Exercise)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.ExcerciseSets.First().NumberOfSets)
+                    @Html.DisplayNameFor(model => model.WorkoutItems.First().NumberOfSets)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.ExcerciseSets.First().Equipment)
+                    @Html.DisplayNameFor(model => model.WorkoutItems.First().Equipment)
                 </th>
                 <th></th>
             </tr>
 
-            @foreach (var item in Model.ExcerciseSets)
+            @foreach (var item in Model.WorkoutItems)
             {
                 <tr>
                     <td>

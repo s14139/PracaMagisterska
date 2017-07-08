@@ -176,6 +176,7 @@
     <Compile Include="Models\Workout.cs" />
     <Compile Include="Models\WorkoutTracker2Context.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\WorkoutViewModel.cs" />
     <Compile Include="ViewModels\ExerciseSetViewModel.cs" />
     <Compile Include="ViewModels\WorkoutItemViewModel.cs" />
   </ItemGroup>

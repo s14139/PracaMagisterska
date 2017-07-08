@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using WorkoutTracker2.Models;
 using WorkoutTracker2.DAL;
+using WorkoutTracker2.ViewModels;
 
 namespace WorkoutTracker2.Controllers
 {
@@ -61,7 +62,7 @@ namespace WorkoutTracker2.Controllers
         // GET: Workouts/Create
         public ActionResult Create()
         {
-            return View();
+            return View(new WorkoutViewModel());
         }
 
         // POST: Workouts/Create
@@ -69,12 +70,17 @@ namespace WorkoutTracker2.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,workoutDate,workoutLength")] Workout workout)
+        public ActionResult Create([Bind(Include = "Id,WorkoutDate,WorkoutLength")] WorkoutViewModel workoutViewModel)
         {
+            var workout = new Workout();
             if (ModelState.IsValid)
             {
-                workout.Id = Guid.NewGuid();
+                                workout.Id = Guid.NewGuid();
                 workout.UserId = 1;
+                workout.Location = workoutViewModel.Location;
+                workout.WorkoutDate = DateTime.Parse(workoutViewModel.WorkoutDate);
+                workout.WorkoutLength = workoutViewModel.WorkoutLength;
+                workout.WorkoutItems = workoutViewModel.WorkoutItems;
                 WorkoutContext.Workouts.Add(workout);
                 return RedirectToAction("Details", new { id = workout.Id });
                 // return RedirectToAction("Index");
