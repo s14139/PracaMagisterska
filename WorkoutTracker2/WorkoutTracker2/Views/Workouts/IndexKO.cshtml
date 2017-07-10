@@ -1,14 +1,17 @@
-﻿@model IEnumerable<WorkoutTracker2.Models.Workout>
-
-@{
+﻿@{
     ViewBag.Title = "KO Index";
 }
 
 <h2>Index</h2>
-<button type="button" class="btn btn-primary">Create Workout</button>
-@*<pre>
-    <tbody >
-</pre>*@
+
+
+<form data-bind="submit: addWorkout">
+    <input data-bind="value: workoutDate" placeholder="Date" />
+    <input data-bind="value: workoutLength" placeholder="Workout Length" />
+    <input data-bind="value: location" placeholder="Location" />
+    <button class="btn btn-primary" type="submit">Add</button>
+</form>
+
 <table class="table">
     <thead>
         <tr>
@@ -31,26 +34,6 @@
             <td data-bind="text: Location.Name"></td>
         </tr>
     </tbody>
-    @*@foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.WorkoutDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.WorkoutLength)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UserId)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                </td>
-            </tr>
-        }*@
-
 </table>
 @section Scripts {
     @Scripts.Render("~/Scripts/ViewModels/IndexKOVM.js")

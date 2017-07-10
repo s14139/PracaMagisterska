@@ -11,36 +11,41 @@ var urlPath = window.location.pathname;
 var urlWithoutIndex = urlPath.substring(0, urlPath.lastIndexOf("/") + 1);
 var completeUrl = urlWithoutIndex + '/FillIndexKO';
 
-$(function () {
-    ko.applyBindings(indexVM);
-    indexVM.loadWorkouts();
-});
-
-var indexVM = {
-    Workouts: ko.observableArray([]),
-
-    loadWorkouts: function () {
-        var self = this;
-        debugger;
-        //Ajax Call Get All Articles
-        $.ajax({
-            type: "GET",
-            url: completeUrl,
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (data) {
-                self.Workouts(data); //Put the response in ObservableArray
-            },
-            error: function (err) {
-                alert(err.status + " : " + err.statusText);
-            }
-        });
-
-    }
-};
-
-function Workouts(Workouts) {
-    this.WorkoutLength = ko.observable(Workouts.WorkoutLength);
-    this.WorkoutDate = ko.observable(Workouts.WorkoutDate);
-    this.Location = ko.observable(Workouts.Location);
+function WorkoutViewModel(workoutDate, workoutLength, location) {
+    var self = this;
+    self.WorkoutDate = ko.observable(workoutDate);
+    self.WorkoutLength = ko.observable(workoutLength);
+    self.Location = location;
 }
+
+function Location(id, location) {
+    var self = this;
+    self.Id = ko.observable(id);
+    self.Name = ko.observable(location);
+}
+
+function IndexViewModel() {
+    var self = this;
+    self.workoutDate = ko.observable();
+    self.workoutLength = ko.observable();
+    self.location = ko.observable();
+    self.addWorkout = function () {
+        self.Workouts.push(
+            new WorkoutViewModel(
+                self.workoutDate(),
+                self.workoutLength(),
+                new Location(2, self.location())
+            )
+        );
+    };
+    self.Workouts = ko.observableArray();
+    $.get(completeUrl, {}, self.Workouts);
+}
+
+ko.applyBindings(new IndexViewModel());
+
+//function Workouts(Workouts) {
+//    this.WorkoutLength = ko.observable(Workouts.WorkoutLength);
+//    this.WorkoutDate = ko.observable(Workouts.WorkoutDate);
+//    this.Location = ko.observable(Workouts.Location);
+//}

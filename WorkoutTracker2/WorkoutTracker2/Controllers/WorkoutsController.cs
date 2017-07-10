@@ -16,7 +16,7 @@ namespace WorkoutTracker2.Controllers
     {
         public JsonResult FillIndexKO()
         {
-            return Json(WorkoutContext.Workouts.ToList(), JsonRequestBehavior.AllowGet);
+            return Json(WorkoutContext.Workouts.Select(x => new WorkoutViewModel(x)).ToList(), JsonRequestBehavior.AllowGet);
         }
         // GET: Workouts
         public ActionResult Index()
