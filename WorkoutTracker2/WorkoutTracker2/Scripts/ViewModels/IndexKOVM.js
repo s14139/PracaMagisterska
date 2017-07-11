@@ -9,7 +9,10 @@
 
 var urlPath = window.location.pathname;
 var urlWithoutIndex = urlPath.substring(0, urlPath.lastIndexOf("/") + 1);
-var completeUrl = urlWithoutIndex + '/FillIndexKO';
+var wokroutListUrl = urlWithoutIndex + '/FillIndexKO';
+var locationListUrl = urlWithoutIndex + "/GetLocations"
+
+     
 
 function WorkoutViewModel(workoutDate, workoutLength, location) {
     var self = this;
@@ -28,22 +31,26 @@ function IndexViewModel() {
     var self = this;
     self.workoutDate = ko.observable();
     self.workoutLength = ko.observable();
-    self.location = ko.observable();
+    self.location = ko.observable();   
     self.addWorkout = function () {
         self.Workouts.push(
             new WorkoutViewModel(
                 self.workoutDate(),
                 self.workoutLength(),
-                new Location(2, self.location())
+                self.location()
             )
         );
     };
+    self.locations = ko.observableArray();
     self.Workouts = ko.observableArray();
-    $.get(completeUrl, {}, self.Workouts);
+    $.get(locationListUrl, {}, self.locations);
+    $.get(wokroutListUrl, {}, self.Workouts);
 }
 
 ko.applyBindings(new IndexViewModel());
-
+$("#datepicker").datepicker({
+    dateFormat: "dd-mm-yy"
+});
 //function Workouts(Workouts) {
 //    this.WorkoutLength = ko.observable(Workouts.WorkoutLength);
 //    this.WorkoutDate = ko.observable(Workouts.WorkoutDate);

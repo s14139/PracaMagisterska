@@ -18,6 +18,10 @@ namespace WorkoutTracker2.Controllers
         {
             return Json(WorkoutContext.Workouts.Select(x => new WorkoutViewModel(x)).ToList(), JsonRequestBehavior.AllowGet);
         }
+        public JsonResult GetLocations()
+        {
+            return Json(WorkoutContext.Locations.ToList(), JsonRequestBehavior.AllowGet);
+        }
         // GET: Workouts
         public ActionResult Index()
         {

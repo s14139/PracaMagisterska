@@ -100,8 +100,8 @@ namespace WorkoutTracker2.DAL
                             new ExerciseSet() {  equipmentWeight = 20, numberOfRepetitions = 10}
                         }
                     } } } };
-        } 
-        
+        }
+
 
         public static List<Difficulty> Difficulties { get; set; }
         public static List<Equipment> Equipments { get; set; }
@@ -112,5 +112,14 @@ namespace WorkoutTracker2.DAL
         public static List<MuscleGroup> MuscleGroups { get; set; }
         public static List<Workout> Workouts { get; set; }
         public static List<WorkoutItem> WorkoutItems { get; set; }
+
+        public static PickListDTO PicklistDTO { get { return new PickListDTO() { Equipments = Equipments, Exercises = Exercises, Locations = Locations }; } }
+    }
+
+    public class PickListDTO
+    {
+        public List<Exercise> Exercises;
+        public List<Equipment> Equipments;
+        public List<Location> Locations;
     }
 }

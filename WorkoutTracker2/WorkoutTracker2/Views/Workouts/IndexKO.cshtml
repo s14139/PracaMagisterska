@@ -6,9 +6,9 @@
 
 
 <form data-bind="submit: addWorkout">
-    <input data-bind="value: workoutDate" placeholder="Date" />
-    <input data-bind="value: workoutLength" placeholder="Workout Length" />
-    <input data-bind="value: location" placeholder="Location" />
+    <input id="datepicker" data-bind="value: workoutDate" placeholder="Date" />
+    <input data-bind="value: workoutLength" type="number" placeholder="Workout Length" />
+    <select data-bind="options: locations, value: location, optionsText: 'Name'"></select>
     <button class="btn btn-primary" type="submit">Add</button>
 </form>
 
