@@ -17,15 +17,18 @@ namespace WorkoutTracker2.ViewModels
         }
         public WorkoutViewModel(Workout workout)
         {
-            this.WorkoutDate = workout.WorkoutDate.ToString("dd-MM-yyyy");
-            this.WorkoutItems = workout.WorkoutItems ?? new List<WorkoutItem>();
-            this.WorkoutLength = workout.WorkoutLength;
-            this.Location = workout.Location;
-            this.Id = workout.Id;
-            this.UserId = workout.UserId;
+            WorkoutDate = workout.WorkoutDate.ToString("dd-MM-yyyy");
+            WorkoutItems = workout.WorkoutItems ?? new List<WorkoutItem>();
+            WorkoutLength = workout.WorkoutLength;
+            Location = workout.Location;
+            Id = workout.Id;
+            UserId = workout.UserId;
+            Name = workout.Name;
             Locations = WorkoutContext.Locations.Select(x => new SelectListItem() { Text = x.Name, Value = x.Id.ToString() });
         }
         public Guid Id { get; set; }
+        public string Name { get; set; }
+
         public Location Location { get; set; }
         public string WorkoutDate { get; set; }
         public List<WorkoutItem> WorkoutItems { get; set; }

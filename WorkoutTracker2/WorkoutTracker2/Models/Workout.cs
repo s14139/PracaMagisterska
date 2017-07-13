@@ -10,7 +10,7 @@ namespace WorkoutTracker2.Models
         public Workout() { WorkoutItems = new List<WorkoutItem>(); Id = Guid.NewGuid(); }
 
         //private DateTime workoutDate { get; set; }
-
+        public string Name { get; set; }
         public Guid Id { get; set; }
         public Location Location { get; set; }
         public DateTime WorkoutDate { get; set; }

@@ -1,25 +1,29 @@
-﻿// This is a simple *viewmodel* - JavaScript that defines the data and behavior of your UI
-//function AppViewModel() {
-//    this.firstName = ko.observable("Bert");
-//    this.lastName = ko.observable("Bertington");
-//}
-
-//// Activates knockout.js
-//ko.applyBindings(new AppViewModel());
-
-var urlPath = window.location.pathname;
+﻿var urlPath = window.location.pathname;
 var urlWithoutIndex = urlPath.substring(0, urlPath.lastIndexOf("/") + 1);
 var wokroutListUrl = urlWithoutIndex + '/FillIndexKO';
 var locationListUrl = urlWithoutIndex + "/GetLocations"
 
-     
-
-function WorkoutViewModel(workoutDate, workoutLength, location) {
-    var self = this;
-    self.WorkoutDate = ko.observable(workoutDate);
-    self.WorkoutLength = ko.observable(workoutLength);
-    self.Location = location;
+function SetupDatePicker() {
+    $(".datepicker").datepicker({
+        dateFormat: "dd-mm-yy"
+    });
 }
+     
+function WorkoutViewModel(data) {
+    var self = this;
+
+    if (!data) {
+        data = {};
+    }
+    self.id = ko.observable(data.Id);
+    self.name = ko.observable(data.Name);
+    self.location = ko.observable(data.Location);
+    self.workoutDate = ko.observable(data.WorkoutDate);
+    self.workoutItems = ko.observableArray(data.WorkoutItems);
+    self.workoutLength = ko.observable(data.WorkoutLength);
+    self.userId = ko.observable(data.UserId);
+    self.locations = ko.observableArray(data.Locations);
+};
 
 function Location(id, location) {
     var self = this;
@@ -29,28 +33,39 @@ function Location(id, location) {
 
 function IndexViewModel() {
     var self = this;
+    self.selectedWorkout = ko.observable();
+    self.name = ko.observable();
     self.workoutDate = ko.observable();
     self.workoutLength = ko.observable();
     self.location = ko.observable();   
     self.addWorkout = function () {
-        self.Workouts.push(
-            new WorkoutViewModel(
-                self.workoutDate(),
-                self.workoutLength(),
-                self.location()
-            )
-        );
+        var viewModel = new WorkoutViewModel();
+        viewModel.name(self.name())
+        viewModel.location(self.location())
+        viewModel.workoutDate(self.workoutDate())
+        viewModel.workoutLength(self.workoutLength())
+        self.Workouts.push(viewModel);
+        SetupDatePicker();
     };
+    self.editWorkout = function (workout) {
+        self.selectedWorkout(workout);
+    }
     self.locations = ko.observableArray();
     self.Workouts = ko.observableArray();
     $.get(locationListUrl, {}, self.locations);
-    $.get(wokroutListUrl, {}, self.Workouts);
+    $.get(wokroutListUrl, {}, function (data) {
+        for (var i = 0; i < data.length; i++) {
+        self.Workouts.push(
+           new WorkoutViewModel(data[i])
+       );
+        }
+    });
 }
 
 ko.applyBindings(new IndexViewModel());
-$("#datepicker").datepicker({
-    dateFormat: "dd-mm-yy"
-});
+SetupDatePicker();
+
+
 //function Workouts(Workouts) {
 //    this.WorkoutLength = ko.observable(Workouts.WorkoutLength);
 //    this.WorkoutDate = ko.observable(Workouts.WorkoutDate);

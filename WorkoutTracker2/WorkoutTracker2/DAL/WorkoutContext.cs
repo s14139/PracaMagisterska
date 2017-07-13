@@ -63,7 +63,7 @@ namespace WorkoutTracker2.DAL
                     ExcerciseDifficulty = Difficulties.Single(x => x.Id == 2),
                     MuscleGroup = MuscleGroups.Single( x => x.Id == 1),
                     Type = ExerciseTypes.Single(x => x.Id == 2),
-                    ExcerciseName = "Bench press"
+                    Name = "Bench press"
                 },
 
                 new Exercise() {
@@ -72,7 +72,7 @@ namespace WorkoutTracker2.DAL
                     ExcerciseDifficulty = Difficulties.Single(x => x.Id == 2),
                     MuscleGroup = MuscleGroups.Single( x => x.Id == 7),
                     Type = ExerciseTypes.Single(x => x.Id == 2),
-                    ExcerciseName = "Chinups"
+                    Name = "Chinups"
                 },
 
                 new Exercise() {
@@ -81,7 +81,7 @@ namespace WorkoutTracker2.DAL
                     ExcerciseDifficulty = Difficulties.Single(x => x.Id == 2),
                     MuscleGroup = MuscleGroups.Single( x => x.Id == 2),
                     Type = ExerciseTypes.Single(x => x.Id == 2),
-                    ExcerciseName = "Bicep curl"
+                    Name = "Bicep curl"
                 },
                 new Exercise() {
                     Id = 4,
@@ -89,7 +89,7 @@ namespace WorkoutTracker2.DAL
                     ExcerciseDifficulty = Difficulties.Single(x => x.Id == 2),
                     MuscleGroup = MuscleGroups.Single( x => x.Id == 3),
                     Type = ExerciseTypes.Single(x => x.Id == 1),
-                    ExcerciseName = "Running"
+                    Name = "Running"
                 },
             };
             ExerciseSets = new List<ExerciseSet>();

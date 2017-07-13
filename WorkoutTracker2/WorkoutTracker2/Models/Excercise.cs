@@ -10,7 +10,7 @@ namespace WorkoutTracker2.Models
         public Exercise() { }
 
         public int Id { get; set; }
-        public string ExcerciseName { get; set; }
+        public string Name { get; set; }
         public ExerciseType Type { get; set; }
         public MuscleGroup MuscleGroup { get; set; }
         public Difficulty ExcerciseDifficulty { get; set; }
@@ -19,7 +19,7 @@ namespace WorkoutTracker2.Models
 
         public override string ToString()
         {
-            return $"{ExcerciseName} - {Equipment?.Name}";
+            return $"{Name} - {Equipment?.Name}";
         }
     }
 }
