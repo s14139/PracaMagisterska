@@ -17,6 +17,6 @@ namespace WorkoutTracker2.Models
         public decimal TotalWeight { get { return ExerciseSets.Select(x => x.equipmentWeight* x.numberOfRepetitions).Sum(); } }
 
 
-        public List<ExerciseSet> ExerciseSets;
+        public List<ExerciseSet> ExerciseSets { get; set; }
     }
 }

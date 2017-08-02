@@ -93,7 +93,7 @@ namespace WorkoutTracker2.DAL
                 },
             };
             ExerciseSets = new List<ExerciseSet>();
-            Workouts = new List<Workout>() { new Workout() { UserId = 1, WorkoutDate = DateTime.Now, Location = Locations.First(), WorkoutLength = 2,
+            Workouts = new List<Workout>() { new Workout() { Name = "Test Workout", UserId = 1, WorkoutDate = DateTime.Now, Location = Locations.First(), WorkoutLength = 2,
                 WorkoutItems = new List<WorkoutItem> {
                     new WorkoutItem() {
                         Equipment = Equipments.First(), Exercise = Exercises.First(), ExerciseSets = new List<ExerciseSet> {
@@ -113,7 +113,7 @@ namespace WorkoutTracker2.DAL
         public static List<Workout> Workouts { get; set; }
         public static List<WorkoutItem> WorkoutItems { get; set; }
 
-        public static PickListDTO PicklistDTO { get { return new PickListDTO() { Equipments = Equipments, Exercises = Exercises, Locations = Locations }; } }
+        public static PickListDTO PicklistDTO { get { return new PickListDTO() { Equipments = Equipments, Exercises = Exercises, Locations = Locations, MuscleGroups = MuscleGroups }; } }
     }
 
     public class PickListDTO
@@ -121,5 +121,6 @@ namespace WorkoutTracker2.DAL
         public List<Exercise> Exercises;
         public List<Equipment> Equipments;
         public List<Location> Locations;
+        public List<MuscleGroup> MuscleGroups;
     }
 }

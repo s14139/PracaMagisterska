@@ -18,9 +18,9 @@ namespace WorkoutTracker2.Controllers
         {
             return Json(WorkoutContext.Workouts.Select(x => new WorkoutViewModel(x)).ToList(), JsonRequestBehavior.AllowGet);
         }
-        public JsonResult GetLocations()
+        public JsonResult GetEnumData()
         {
-            return Json(WorkoutContext.Locations.ToList(), JsonRequestBehavior.AllowGet);
+            return Json(WorkoutContext.PicklistDTO, JsonRequestBehavior.AllowGet);
         }
         // GET: Workouts
         public ActionResult Index()
@@ -30,7 +30,12 @@ namespace WorkoutTracker2.Controllers
 
         public ActionResult IndexKO()
         {
-            return View(WorkoutContext.Workouts.ToList());
+            return View();
+        }
+
+        public ActionResult IndexNG()
+        {
+            return View();
         }
 
         // GET: Workouts/Details/5
