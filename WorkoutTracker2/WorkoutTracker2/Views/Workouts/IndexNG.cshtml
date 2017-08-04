@@ -1,109 +1,151 @@
 ﻿@{
     ViewBag.Title = "NG Index";
 }
-
-<h2>Workouts</h2>
-<form data-bind="submit: addWorkout">
-    <input data-bind="value: name" placeholder="Name" />
-    <input class="datepicker" data-bind="value: workoutDate" placeholder="Date" />
-    <input data-bind="value: workoutLength" type="number" placeholder="Workout Length" />
-    <select data-bind="options: locations, value: location, optionsText: 'Name'"></select>
-    <button class="btn btn-primary" type="submit">Add</button>
-</form>
-
-<table class="table table-hover">
-    <thead class="thead-inverse">
-        <tr>
-            <th>
-                Workout Name
-            </th>
-            <th>
-                Workout Date
-            </th>
-            <th>
-                Workout Length
-            </th>
-            <th>
-                Location
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody data-bind="foreach: Workouts">
-        <tr data-bind="click: $root.editWorkout">
-            <td><input data-bind="value: name" placeholder="Name" /></td>
-            <td><input class="datepicker" data-bind="value: workoutDate" placeholder="Date" /></td>
-            <td><input data-bind="value: workoutLength" type="number" placeholder="Workout Length" /></td>
-            <td><select data-bind="options: $root.locations, value: location, optionsText: 'Name'"></select></td>
-            <td><button class="btn btn-primary">Save</button></td>
-        </tr>
-    </tbody>
-</table>
-
-<h3>Exercises</h3>
-<form data-bind="submit: addWorkoutItem">
-    <select data-bind="options: exercises, value: exercise, optionsText: 'Name'"></select>
-    <select data-bind="options: equipments, value: equipment, optionsText: 'Name'"></select>
-    <button class="btn btn-primary" type="submit">Add</button>
-</form>
-<div data-bind="with: selectedWorkout">
-    <table class="table table-hover">
-        <thead class="thead-inverse">
-            <tr>
-                <th>
-                    Exercise
-                </th>
-                <th>
-                    Equipment
-                </th>
-                <th>
-                    NumberOfSets
-                </th>
-                <th>
-                    Total Weight
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody data-bind="foreach: workoutItems">
-            <tr data-bind="click: $root.editWorkoutItem">
-                <td><select data-bind="options: $root.exercises, value: exercise, optionsText: 'Name'"></select></td>
-                <td><select data-bind="options: $root.equipments, value: equipment, optionsText: 'Name'"></select></td>
-                <td><span data-bind="text: numberOfSets()"></span></td>
-                <td><span data-bind="text: totalWeight()"></span></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-<h4>Sets</h4>
-<form data-bind="submit: addSet">
-    <input data-bind="value: equipmentWeight" type="number" placeholder="Weight" />
-    <input data-bind="value: numberOfRepetitions" type="number" placeholder="Reps" />
-    <button class="btn btn-primary" type="submit">Add</button>
-</form>
-<div data-bind="with: selectedWorkoutItem">
-    <table class="table">
-        <thead class="thead-inverse">
-            <tr>
-                <th>
-                    Weight
-                </th>
-                <th>
-                    Repetitions
-                </th>
-            </tr>
-        </thead>
-        <tbody data-bind="foreach: exerciseSets">
-            <tr>
-                <td><input data-bind="value: equipmentWeight" type="number" placeholder="Weight" /></td>
-                <td><input data-bind="value: numberOfRepetitions" type="number" placeholder="Repetitions" /></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
 @section Scripts {
-    @Scripts.Render("~/Scripts/ViewModels/IndexKOVM.js")
-
+    @Scripts.Render("~/Scripts/angular/scope.js")
 }
+<div id="indexNgBody" ng-app="workoutApp">
+    <div ng-controller="workoutController">
+        <strong>First Name:</strong> {{firstName}} <br />
+        <strong>Last Name:</strong> {{lastName}}<br />
+        <tr ng-repeat="workout in workouts">
+            <td>
+                <input placeholder="Name" />{{workout.Name}}
+            </td>
+            <td>
+                <input class="datepicker" placeholder="Date" />{{workout.WorkoutDate}}
+            </td>
+            <td>
+                <input type="number" placeholder="Workout Length" />
+            </td>
+            <td>
+                <select></select>
+            </td>
+            <td>
+                <button class="btn btn-primary">Save</button>
+            </td>
+        </tr>
+    </div>
+ 
+    <h2>Workouts</h2>
+    <form>
+        <input placeholder="Name" />
+        <input class="datepicker" placeholder="Date" />
+        <input type="number" placeholder="Workout Length" />
+        <select></select>
+        <button class="btn btn-primary" type="submit">Add</button>
+    </form>
+    @*<table class="table table-hover">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>
+                        Workout Name
+                    </th>
+                    <th>
+                        Workout Date
+                    </th>
+                    <th>
+                        Workout Length
+                    </th>
+                    <th>
+                        Location
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody ng-controller="workoutController">
+                <tr ng-repeat="workout in workouts">
+                    <td>
+                        <input placeholder="Name" />{{workout.Name}}
+                    </td>
+                    <td>
+                        <input class="datepicker" placeholder="Date" />{{workout.Date}}
+                    </td>
+                    <td>
+                        <input type="number" placeholder="Workout Length" />{{workout.WorkoutLength}}
+                    </td>
+                    <td>
+                        <select></select>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary">Save</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>*@
+
+    <h3>Exercises</h3>
+    <form>
+        <select></select>
+        <select></select>
+        <button class="btn btn-primary" type="submit">Add</button>
+    </form>
+    <div>
+        <table class="table table-hover">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>
+                        Exercise
+                    </th>
+                    <th>
+                        Equipment
+                    </th>
+                    <th>
+                        NumberOfSets
+                    </th>
+                    <th>
+                        Total Weight
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <select></select>
+                    </td>
+                    <td>
+                        <select></select>
+                    </td>
+                    <td>
+                        <span></span>
+                    </td>
+                    <td>
+                        <span></span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h4>Sets</h4>
+    <form>
+        <input placeholder="Weight" />
+        <input placeholder="Reps" />
+        <button class="btn btn-primary" type="submit">Add</button>
+    </form>
+    <div>
+        <table class="table">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>
+                        Weight
+                    </th>
+                    <th>
+                        Repetitions
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="number" placeholder="Weight" />
+                    </td>
+                    <td>
+                        <input type="number" placeholder="Repetitions" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
