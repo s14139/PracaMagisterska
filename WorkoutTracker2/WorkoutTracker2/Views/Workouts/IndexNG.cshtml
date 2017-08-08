@@ -6,14 +6,15 @@
 }
 <div id="indexNgBody" ng-app="workoutApp">
     <h2>Workouts</h2>
-    <form ng-controller="workoutController">
-        <input placeholder="Name"  ng-model="name" />
-        <input type="text" placeholder="Date" ng-model="workoutDate" mydatepicker/>
-        <input type="number" placeholder="Workout Length"  ng-model="workoutLength"/>
-        <select ng-model="location" ng-options="loc.Value as loc.Text for loc in locations"></select>
-        <button class="btn btn-primary" ng-click="addWorkout()">Add</button>
-    </form>
-    <table class="table table-hover">
+    <div ng-controller="workoutController">
+        <form>
+            <input placeholder="Name" ng-model="name" />
+            <input type="text" placeholder="Date" ng-model="workoutDate" mydatepicker />
+            <input type="number" placeholder="Workout Length" ng-model="workoutLength" />
+            <select ng-model="location" ng-options="loc.Id as loc.Name for loc in locations"></select>
+            <button class="btn btn-primary" ng-click="addWorkout()">Add</button>
+        </form>
+        <table class="table table-hover">
             <thead class="thead-inverse">
                 <tr>
                     <th>
@@ -31,19 +32,19 @@
                     <th></th>
                 </tr>
             </thead>
-            <tbody ng-controller="workoutController">
+            <tbody>
                 <tr ng-repeat="workout in workouts">
                     <td>
-                        <input placeholder="Name"  ng-model="workout.Name" />
+                        <input placeholder="Name" ng-model="workout.Name" />
                     </td>
                     <td>
-                        <input class="datepicker" placeholder="Date" ng-model="workout.WorkoutDate"/>
+                        <input class="datepicker" placeholder="Date" ng-model="workout.WorkoutDate" />
                     </td>
                     <td>
-                        <input type="number" placeholder="Workout Length" ng-model="workout.WorkoutLength"/>
+                        <input type="number" placeholder="Workout Length" ng-model="workout.WorkoutLength" />
                     </td>
                     <td>
-                        <select ng-model="workout.Location" ng-options="loc.Value as loc.Text for loc in workout.Locations"></select>
+                        <select ng-options="loc.Id as loc.Name for loc in $parent.locations"  ng-model="workout.Location"></select>
                     </td>
                     <td>
                         <button class="btn btn-primary">Save</button>
@@ -54,8 +55,8 @@
 
     <h3>Exercises</h3>
     <form>
-        <select></select>
-        <select></select>
+        <select ng-options="exc.Id as exc.Name for exc in exercises"  ng-model="exercise"></select>
+        <select ng-options="equ.Id as equ.Name for equ in equipments"  ng-model="equipment"></select>
         <button class="btn btn-primary" type="submit">Add</button>
     </form>
     <div>
@@ -80,10 +81,10 @@
             <tbody>
                 <tr>
                     <td>
-                        <select></select>
+                        <select ng-options="exc.Id as exc.Name for exc in $parent.exercises"  ng-model="workout.Exercise"></select>
                     </td>
                     <td>
-                        <select></select>
+                        <select ng-options="equ.Id as equ.Name for equ in $parent.equipments"  ng-model="workout.Equipment"></select>
                     </td>
                     <td>
                         <span></span>
@@ -102,7 +103,6 @@
         <input placeholder="Reps" />
         <button class="btn btn-primary" type="submit">Add</button>
     </form>
-    <div>
         <table class="table">
             <thead class="thead-inverse">
                 <tr>
@@ -126,4 +126,5 @@
             </tbody>
         </table>
     </div>
+
 </div>

@@ -21,6 +21,8 @@ workoutApp.controller('workoutController', ['$scope', function ($scope) {
     $scope.location = "";
     $scope.workoutDate = "";
     $scope.workoutLength = "";
+    $scope.exercise = {};
+    $scope.equipment = {};
     $scope.locations = [];
     $scope.addWorkout = function () {
         var viewModel = {};
@@ -28,17 +30,21 @@ workoutApp.controller('workoutController', ['$scope', function ($scope) {
         viewModel.Location = $scope.location;
         viewModel.WorkoutDate = $scope.workoutDate;
         viewModel.WorkoutLength = $scope.workoutLength;
-        $scope.workouts.push($scope.workouts[0]);
+        $scope.workouts.push(viewModel);
         //$scope.editWorkout(viewModel)
     };
-    //$scope.workouts = [{ workoutName: 'asdad', workoutDate: '2016-05-09' }, { workoutName: 'workout2', workoutDate: '2015-01-01' }]
-    jQuery.ajax({
-        url: "/Workouts/FillIndexKO",
-        success: function (result) {
-            $scope.workouts = result;
-            $scope.locations = result[0].Locations;
-        },
-        async: false
+    $.get("/Workouts/GetEnumData", {}, function (data) {
+        $scope.locations = data.Locations;
+        $scope.exercises = data.Exercises;
+        $scope.equipments = data.Equipments;
+        $scope.muscleGroups = data.MuscleGroups;
+        $scope.$apply();
+        $.get("/Workouts/FillIndexKO", {}, function (data) {
+            $scope.workouts = data;
+            $scope.$apply();
+        });
     });
+    
+
 }]);
 
