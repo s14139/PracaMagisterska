@@ -26,20 +26,20 @@ var WorkoutItemViewModel = function (data) {
     if (!data) {
         data = {};
     }
-
     self.id = ko.observable(data.Id);
     self.exercise = ko.observable(data.Exercise);
     self.equipment = ko.observable(data.Equipment);
     self.exerciseSets = ko.observableArray();
+    self.numberOfSets = ko.computed(function () {
+        return self.exerciseSets().length;
+    });
     if (data.ExerciseSets != null) {
         for (var i = 0; i < data.ExerciseSets.length; i++) {
             var exerciseSet = data.ExerciseSets[i];
             self.exerciseSets.push(new ExerciseSetViewModel(exerciseSet));
         }
     }
-    self.numberOfSets = ko.computed(function () {
-        return self.exerciseSets().length;
-    });
+
     self.totalWeight = ko.computed(function () {
         var total = 0;
         var sets = self.exerciseSets();
@@ -52,7 +52,6 @@ var WorkoutItemViewModel = function (data) {
 
 function WorkoutViewModel(data) {
     var self = this;
-
     if (!data) {
         data = {};
     }
@@ -72,8 +71,6 @@ function WorkoutViewModel(data) {
 
 };
 
-
-
 function Location(id, location) {
     var self = this;
     self.Id = ko.observable(id);
@@ -87,12 +84,10 @@ function IndexViewModel() {
     self.name = ko.observable();
     self.workoutDate = ko.observable();
     self.workoutLength = ko.observable();
-
     self.location = ko.observable();
     self.exercise = ko.observable();
     self.equipment = ko.observable();
     self.muscleGroup = ko.observable();
-
     self.equipmentWeight = ko.observable();
     self.numberOfRepetitions = ko.observable();
 
@@ -121,7 +116,6 @@ function IndexViewModel() {
         self.selectedWorkoutItem().exerciseSets.push(viewModel);
     };
 
-
     self.editWorkout = function (workout) {
         self.selectedWorkout(workout);
         if (workout.exerciseSets != null && workout.exerciseSets.length > 0) {
@@ -130,7 +124,6 @@ function IndexViewModel() {
         else {
             self.selectedWorkoutItem(null);
         }
-        
     }
 
     self.editWorkoutItem = function (workoutItem) {
@@ -145,14 +138,10 @@ function IndexViewModel() {
         }
         return total;
     });
-
-
-
     self.locations = ko.observableArray();
     self.exercises = ko.observableArray();
     self.equipments = ko.observableArray();
     self.muscleGroups = ko.observableArray();
-
     self.Workouts = ko.observableArray();
     $.get(locationListUrl, {}, function (data) {
         self.locations(data.Locations);
