@@ -2,113 +2,116 @@
     ViewBag.Title = "NG Index";
 }
 @section Scripts {
+    @Scripts.Render("~/bundles/angular")
     @Scripts.Render("~/Scripts/angular/scope.js")
 }
 <div id="indexNgBody" ng-app="workoutApp">
     <h2>Workouts</h2>
     <div ng-controller="workoutController">
         <form>
-            <input placeholder="Name" ng-model="name" />
-            <input type="text" placeholder="Date" ng-model="workoutDate" mydatepicker />
-            <input type="number" placeholder="Workout Length" ng-model="workoutLength" />
-            <select ng-model="location" ng-options="loc.Id as loc.Name for loc in locations"></select>
+            <input class="input-sm" placeholder="Name" ng-model="name" />
+            <input class="input-sm" class="input-sm" type="text" placeholder="Date" ng-model="workoutDate" mydatepicker />
+            <input class="input-sm" type="number" placeholder="Workout Length" ng-model="workoutLength" />
+            <select class="input-sm" ng-model="location" ng-options="loc.Id as loc.Name for loc in locations"></select>
             <button class="btn btn-primary" ng-click="addWorkout()">Add</button>
         </form>
-        <table class="table-sm table-hover">
-            <thead class="thead-inverse">
-                <tr>
-                    <th>
-                        Workout Name
-                    </th>
-                    <th>
-                        Workout Date
-                    </th>
-                    <th>
-                        Workout Length
-                    </th>
-                    <th>
-                        Location
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="workout in workouts" ng-click="selectWorkout(workout)">
-                    <td><input placeholder="Name" ng-model="workout.Name" /></td>
-                    <td><input class="datepicker" placeholder="Date" mydatepicker ng-model="workout.WorkoutDate" /></td>
-                    <td><input type="number" placeholder="Workout Length" ng-model="workout.WorkoutLength" /></td>
-                    <td><select ng-options="loc.Id as loc.Name for loc in $parent.locations"  ng-model="workout.Location"></select></td>
-                    <td>
-                        <button class="btn btn-primary">Save</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table-sm table-hover">
+                <thead class="thead-inverse">
+                    <tr>
+                        <th>
+                            Workout Name
+                        </th>
+                        <th>
+                            Workout Date
+                        </th>
+                        <th>
+                            Workout Length
+                        </th>
+                        <th>
+                            Location
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="workout in workouts" ng-click="selectWorkout(workout)">
+                        <td><input class="input-sm" placeholder="Name" ng-model="workout.Name" /></td>
+                        <td><input class="datepicker input-sm" placeholder="Date" mydatepicker ng-model="workout.WorkoutDate" /></td>
+                        <td><input class="input-sm" type="number" placeholder="Workout Length" ng-model="workout.WorkoutLength" /></td>
+                        <td><select class="input-sm" ng-options="loc.Id as loc.Name for loc in $parent.locations" ng-model="workout.Location"></select></td>
+                        <td>
+                            <button class="btn btn-primary">Save</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <h3>Exercises</h3>
+        <form>
+            <select class="input-sm" ng-options="exc.Id as exc.Name for exc in exercises" ng-model="exercise"></select>
+            <select class="input-sm" ng-options="equ.Id as equ.Name for equ in equipments" ng-model="equipment"></select>
+            <button class="btn btn-primary" type="submit" ng-click="addWorkoutItem()">Add</button>
+        </form>
+        <div class="table-responsive">
+            <table class="table-sm table-hover">
+                <thead class="thead-inverse">
+                    <tr>
+                        <th>
+                            Exercise
+                        </th>
+                        <th>
+                            Equipment
+                        </th>
+                        <th>
+                            NumberOfSets
+                        </th>
+                        <th>
+                            Total Weight
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr tr ng-repeat="workoutItem in selectedWorkout.WorkoutItems" ng-click="selectWorkoutItem(workoutItem)">
+                        <td><select class="input-sm" ng-options="exc.Id as exc.Name for exc in $parent.exercises" ng-model="workoutItem.Exercise"></select></td>
+                        <td><select class="input-sm" ng-options="equ.Id as equ.Name for equ in $parent.equipments" ng-model="workoutItem.Equipment"></select></td>
+                        <td><span>{{workoutItem.NumberOfSets()}}</span></td>
+                        <td><span>{{workoutItem.TotalWeight()}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-    <h3>Exercises</h3>
-    <form>
-        <select ng-options="exc.Id as exc.Name for exc in exercises"  ng-model="exercise"></select>
-        <select ng-options="equ.Id as equ.Name for equ in equipments"  ng-model="equipment"></select>
-        <button class="btn btn-primary" type="submit"  ng-click="addWorkoutItem()">Add</button>
-    </form>
-    <div>
-        <table class="table-sm table-hover">
-            <thead class="thead-inverse">
-                <tr>
-                    <th>
-                        Exercise
-                    </th>
-                    <th>
-                        Equipment
-                    </th>
-                    <th>
-                        NumberOfSets
-                    </th>
-                    <th>
-                        Total Weight
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr tr ng-repeat="workoutItem in selectedWorkout.WorkoutItems" ng-click="selectWorkoutItem(workoutItem)">
-                    <td><select ng-options="exc.Id as exc.Name for exc in $parent.exercises"  ng-model="workoutItem.Exercise"></select></td>
-                    <td><select ng-options="equ.Id as equ.Name for equ in $parent.equipments"  ng-model="workoutItem.Equipment"></select></td>
-                    <td><span>{{workoutItem.NumberOfSets()}}</span></td>
-                    <td><span>{{workoutItem.TotalWeight()}}</span></td>
-                </tr>
-            </tbody>
-        </table>
+        <h4>Sets</h4>
+        <form>
+            <input class="input-sm" type="number" placeholder="Weight" ng-model="weight" />
+            <input class="input-sm" type="number" placeholder="Reps" ng-model="reps" />
+            <button class="btn btn-primary" type="submit" ng-click="addSet()">Add</button>
+        </form>
+        <div class="table-responsive">
+            <table class="table-sm">
+                <thead class="thead-inverse">
+                    <tr>
+                        <th>
+                            Weight
+                        </th>
+                        <th>
+                            Repetitions
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="set in selectedWorkoutItem.ExerciseSets">
+                        <td>
+                            <input class="input-sm" type="number" placeholder="Weight" ng-model="set.equipmentWeight" />
+                        </td>
+                        <td>
+                            <input class="input-sm" type="number" placeholder="Repetitions" ng-model="set.numberOfRepetitions" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-
-    <h4>Sets</h4>
-    <form>
-        <input  type="number" placeholder="Weight"  ng-model="weight" />
-        <input  type="number" placeholder="Reps"  ng-model="reps" />
-        <button class="btn btn-primary" type="submit"  ng-click="addSet()">Add</button>
-    </form>
-        <table class="table-sm">
-            <thead class="thead-inverse">
-                <tr>
-                    <th>
-                        Weight
-                    </th>
-                    <th>
-                        Repetitions
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="set in selectedWorkoutItem.ExerciseSets">
-                    <td>
-                        <input type="number" placeholder="Weight" ng-model="set.equipmentWeight"/>
-                    </td>
-                    <td>
-                        <input type="number" placeholder="Repetitions" ng-model="set.numberOfRepetitions"/>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
 </div>

@@ -27,8 +27,8 @@ workoutApp.controller('workoutController', ['$scope', function ($scope) {
     $scope.selectedWorkoutItem = {};
     $scope.selectedSet = {};
     $scope.locations = [];
-    $scope.weight = 0;
-    $scope.reps = 0;
+    $scope.weight = "";
+    $scope.reps = "";
     $scope.addWorkout = function () {
         var viewModel = {};
         viewModel.Name = $scope.name;
